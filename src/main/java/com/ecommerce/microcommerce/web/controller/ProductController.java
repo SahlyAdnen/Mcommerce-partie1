@@ -19,7 +19,7 @@ import java.net.URI;
 import java.util.List;
 
 
-@Api( description="API pour es opérations CRUD sur les produits.")
+@Api( tags="API pour es opérations CRUD sur les produits.")
 
 @RestController
 public class ProductController {
@@ -102,7 +102,16 @@ public class ProductController {
 
         return productDao.chercherUnProduitCher(400);
     }
-
+@GetMapping(value="/AdminProduits")
+    public String calculerMargeProduit(){
+List<Product> liste = productDao.findAll();
+String s="";
+    for (Product p:liste) {
+int marge = p.getPrix()-p.getPrixAchat();
+s=s+p.toString()+":"+marge+"\n";
+    }
+return s;
+    }
 
 
 }
