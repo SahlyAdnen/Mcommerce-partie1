@@ -112,6 +112,10 @@ s=s+p.toString()+":"+marge+"\n";
     }
 return s;
     }
-
+    @GetMapping(value="/Produits/trier")
+    List<Product> trierProduitParOreAlphabetique ()
+    {
+        return productDao.OrderByNom();
+    }
 
 }
